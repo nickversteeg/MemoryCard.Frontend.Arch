@@ -1,4 +1,4 @@
-import { reactive, readonly } from 'vue';
+import { reactive, readonly } from "vue";
 
 export abstract class Store<T extends Record<string, unknown>> {
   protected state: T;
@@ -15,7 +15,7 @@ export abstract class Store<T extends Record<string, unknown>> {
   protected abstract data(): T;
 
   // eslint-disable-next-line @typescript-eslint/no-empty-function, @typescript-eslint/no-unused-vars
-  protected setup(data: T): void { }
+  protected setup(data: T): void {}
 
   public getState(): T {
     // This prevents devs to update the state directly and makes sure that they will need to use an action
@@ -27,7 +27,7 @@ export abstract class Store<T extends Record<string, unknown>> {
     return navigator.onLine;
   }
 
-  public resetStore() {
+  public resetStore(): void {
     this.state = JSON.parse(JSON.stringify(this.defaultState));
   }
 }

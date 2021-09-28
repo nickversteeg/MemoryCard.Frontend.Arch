@@ -3,10 +3,13 @@
 ## Project setup
 ```
 yarn install
+yarn install -g cors-backdoor
 ```
 
 ### Compiles and hot-reloads for development
+##### Remember to run cors-backdoor!
 ```
+cors-backdoor --target https://api.igdb.com/v4/
 yarn serve
 ```
 
