@@ -1,6 +1,7 @@
 <template>
   <div id="nav">
-    <router-link to="/">Home</router-link>
+    <router-link to="/">Home</router-link> | 
+    <router-link to="/data">Data</router-link>
   </div>
   <router-view />
 </template>
@@ -27,3 +28,16 @@
   }
 }
 </style>
+
+<script>
+import { container } from "tsyringe";
+import GameDataHandler from "@/dataHandlers/game-data-handler";
+import { defineComponent } from "vue";
+
+export default defineComponent({
+  setup() {
+    const gameDataHandler = container.resolve(GameDataHandler);
+    return { gameDataHandler };
+  },
+});
+</script>

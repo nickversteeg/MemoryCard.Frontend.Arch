@@ -10,26 +10,25 @@ export default class GameStore extends Store<IGameStore> {
    * Initializes the data for the game store.
    */
   protected data(): IGameStore {
-    const game = new Game(0, "", "", "");
     return {
-      item: game,
-      items: [game],
+      selected: new Game(0, "", "", ""),
+      games: [] as IGame[],
     };
   }
 
   public get selected(): IGame {
-    return this.state.item;
+    return this.state.selected as IGame;
   }
 
   public set selected(value: IGame) {
-    this.state.item = value;
+    this.state.selected = value;
   }
 
   public get games(): IGame[] {
-    return this.state.items;
+    return this.state.games as IGame[];
   }
 
   public set games(value: IGame[]) {
-    this.state.items = value;
+    this.state.games = value;
   }
 }
