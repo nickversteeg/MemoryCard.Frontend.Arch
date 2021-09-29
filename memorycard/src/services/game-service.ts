@@ -1,3 +1,4 @@
+import Game from "@/models/game";
 import IGame from "@/models/igame";
 import axios from "axios";
 import { injectable } from "tsyringe";
@@ -16,10 +17,39 @@ export default class GameService {
         },
         data: "fields *, screenshots.*; limit 12;",
       });
-      return response.data;
+
+      const games: IGame[] = [];
+      response.data.forEach((element: any) => {
+        games.push(
+          new Game(
+            element.id,
+            element.name,
+            element.summary,
+            element.screenshots
+              ? `${element.screenshots[0].url}`
+              : "//via.placeholder.com/150x300"
+          )
+        );
+        console.log(games[games.length - 1]);
+      });
+
+      return games;
     } catch (err) {
       console.log(err);
       return [];
     }
-  };
+  }
+
+  async getGameImageDataAsync(image_url: string): Promise<string> {
+    try {
+      const response = await axios({
+        method: "POST",
+        baseURL: image_url,
+      });
+      return response.data;
+    } catch (err) {
+      console.log(err);
+      return "";
+    }
+  }
 }

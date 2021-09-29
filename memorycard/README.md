@@ -20,6 +20,7 @@ yarn build
 
 ### Run your unit tests
 ```
+cors-backdoor --target https://api.igdb.com/v4/
 yarn test:unit
 ```
 

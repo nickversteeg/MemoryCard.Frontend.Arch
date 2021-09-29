@@ -4,10 +4,6 @@ import GameService from "@/services/game-service";
 import GameStore from "@/stores/game-store";
 import GameDataHandler from "@/dataHandlers/game-data-handler";
 
-let games = [];
-
-beforeAll()
-
 describe("game-service.ts", () => {
   it("gets games from the API", async () => {
     // arrange

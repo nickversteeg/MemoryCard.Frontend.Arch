@@ -1,11 +1,16 @@
 <template>
   <div
-    class="game-card"
+    class="game-card columns"
     :class="{ selected: selected && selected.id === game.id }"
     @click="setActiveGame(game)"
   >
-    <h1 class="title">{{ game.name }}</h1>
-    <p>{{ game.summary }}</p>
+    <div class="column is-4">
+      <img :src="image_url" alt="" />
+    </div>
+    <div class="column is-8">
+      <h1 class="title">{{ game.name }}</h1>
+      <p>{{ game.summary }}</p>
+    </div>
   </div>
 </template>
 
@@ -33,6 +38,13 @@ export default defineComponent({
   computed: {
     selected() {
       return this.gameStore.getState().selected;
+    },
+    image_url() {
+      if (!this.game) return "";
+      let attrs = this.game.image_url.split("/");
+      console.log(attrs);
+      attrs[6] = "t_cover_big";
+      return attrs.join("/");
     },
   },
 });
