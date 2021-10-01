@@ -42,7 +42,6 @@ export default defineComponent({
     image_url() {
       if (!this.game) return "";
       let attrs = this.game.image_url.split("/");
-      console.log(attrs);
       attrs[6] = "t_cover_big";
       return attrs.join("/");
     },

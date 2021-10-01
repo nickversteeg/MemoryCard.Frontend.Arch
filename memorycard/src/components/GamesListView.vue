@@ -1,8 +1,6 @@
 <template>
   <div class="column is-6">
-    <div v-for="game in games" :key="game.id">
-      <GamesListGameView :game="game" />
-    </div>
+    <GamesListGameView :game="game" v-for="game in games" :key="game.id" />
   </div>
 </template>
 
@@ -13,7 +11,6 @@ import GamesListGameView from "./GamesListGameView.vue";
 import IGame from "@/models/igame";
 import GameStore from "@/stores/game-store";
 import GameService from "@/services/game-service";
-
 
 export default defineComponent({
   setup() {

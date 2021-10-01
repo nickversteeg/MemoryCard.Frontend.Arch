@@ -30,7 +30,6 @@ export default class GameService {
               : "//via.placeholder.com/150x300"
           )
         );
-        console.log(games[games.length - 1]);
       });
 
       return games;

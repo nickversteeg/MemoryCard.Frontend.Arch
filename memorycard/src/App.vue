@@ -1,17 +1,5 @@
 <template>
-  <nav id="nav" class="navbar navbar-dark" role="navigation" aria-label="main navigation">
-    <div class="navbar-menu">
-      <div class="navbar-start">
-        <router-link to="/">Home</router-link>
-        <router-link to="/data">Data</router-link>
-      </div>
-      <navbar class="end">
-        <div>
-          {{ name }}
-        </div>
-      </navbar>
-    </div>
-  </nav>
+  <NavBarView>Not currently logged in</NavBarView>
   <router-view />
 </template>
 
@@ -62,8 +50,12 @@ import { container } from "tsyringe";
 import GameDataHandler from "@/dataHandlers/game-data-handler";
 import { defineComponent } from "vue";
 import GameStore from "./stores/game-store";
+import NavBarView from "@/components/NavBarView.vue";
 
 export default defineComponent({
+  components: {
+    NavBarView,
+  },
   setup() {
     const gameDataHandler = container.resolve(GameDataHandler);
     const gameStore = container.resolve(GameStore);
@@ -72,7 +64,7 @@ export default defineComponent({
   computed: {
     name() {
       return this.gameStore.getState().selected.name;
-    }
-  }
+    },
+  },
 });
 </script>

@@ -11,7 +11,6 @@ import GamesListView from "@/components/GamesListView.vue";
 import GameView from "@/components/GameView.vue";
 
 export default defineComponent({
-  name: "Home",
   components: {
     GamesListView,
     GameView,

@@ -12,7 +12,6 @@ export default class GameDataHandler extends DataHandler {
     @inject(GameService) protected gameService: GameService
   ) {
     super(); /* Why is this needed in TypeScript? */
-    console.log("Called");
     this.gameService.getGamesAsync().then((response) => {
       this.gameStore.games = response;
     });
